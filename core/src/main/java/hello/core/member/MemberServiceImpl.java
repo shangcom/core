@@ -6,7 +6,7 @@ public class MemberServiceImpl implements MemberService {
      * 인터페이스의 구현체가 하나만 있을 경우, '인터페이스명 + Impl'이 관례임.
      * */
 
-    private MemberRepository memberRepository = new MemoryMemberRepository();
+    private MemberRepository memberRepository;
 
     @Override
     public void join(Member member) {
@@ -16,5 +16,9 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member findMember(Long MemberId) {
         return memberRepository.findById(MemberId);
+    }
+
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 }
