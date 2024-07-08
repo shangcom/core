@@ -21,4 +21,12 @@ public class MemberServiceImpl implements MemberService {
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
+
+    /**
+     * 테스트 용도
+     * @return
+     */
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
