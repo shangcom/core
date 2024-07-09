@@ -1,6 +1,6 @@
 package hello.core.singleton;
 
-import hello.core.config.AppConfig;
+import hello.core.AppConfig;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemberServiceImpl;
 import hello.core.order.OrderServiceImpl;
