@@ -1,14 +1,14 @@
 package hello.core.order;
 
 import hello.core.discountPolicy.DiscountPolicy;
-import hello.core.discountPolicy.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+// 빈 이름 직접 지정하려면
+// @Component("빈 이름") <- 이렇게 하면 된다.
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
