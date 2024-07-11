@@ -1,5 +1,6 @@
 package hello.core.member;
 
+
 public class Member {
     private Long id;
     private String name;
@@ -28,11 +29,11 @@ public class Member {
         this.name = name;
     }
 
-    public Grade getGrage() {
+    public Grade getGrade() {
         return grade;
     }
 
-    public void setGrage(Grade grage) {
-        this.grade = grage;
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
 }

@@ -13,6 +13,16 @@ java {
 	}
 }
 
+configurations{
+	compileOnly{
+		extendsFrom annotationProcessor
+	}
+	testCompileOnly{
+		extendsFrom testAnnotationProcessor
+	}
+}
+
+
 repositories {
 	mavenCentral()
 }
@@ -21,6 +31,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	compileOnly 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+
 }
 
 tasks.named('test') {
