@@ -2,7 +2,9 @@ package hello.core.scan;
 
 import hello.core.AppConfig;
 import hello.core.AutoAppConfig;
+import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
+import hello.core.order.OrderServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -23,15 +25,17 @@ public class AutoAppConfigTest {
         // Act
         // TODO: Call the method to be tested
         MemberService memberService = ac.getBean(MemberService.class);
-
+        OrderServiceImpl orderService = ac.getBean(OrderServiceImpl.class);
+        MemberRepository memberRepository = orderService.getMemberRepository();
         // Assert
         // TODO: Verify the results
         assertThat(memberService).isInstanceOf(MemberService.class);
+        System.out.println("memberRepository = " + memberRepository);
     }
 
 
     /**
-     * @ComponentScan 사용하면, 빈 이름은 @Component 달린 클래스명에서 맨 앞을자를 소문자로 바꾼 것으로 자동 등록된다.
+     * @ComponentScan : 사용하면, 빈 이름은 @Component 달린 클래스명에서 맨 앞을자를 소문자로 바꾼 것으로 자동 등록된다.
      * 만약 빈 등록 명을 직접 정해주려면,
      * @Component("빈 이름")으로 하면 된다.
      */

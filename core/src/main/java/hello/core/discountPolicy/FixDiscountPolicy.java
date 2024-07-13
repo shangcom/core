@@ -2,9 +2,13 @@ package hello.core.discountPolicy;
 
 import hello.core.member.Grade;
 import hello.core.member.Member;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Primary
+//@Qualifier("fixDiscountPolicy")
+// 생성자 주입하는 쪽에서 매개변수로 @Qualifier를 사용해서 fixDiscountPolicy를 지정해버리면 여기서 딱히 이름 지정해줄 필요도 없음.
 public class FixDiscountPolicy implements DiscountPolicy{
 
     /**
