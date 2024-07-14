@@ -62,6 +62,8 @@ public class NetworkClient {
 
     가장 편한 방법은, 해당 메서드들에 바로 @PostConstruct / @PreDistroy 어노테이션 붙인다.
     이렇게 하면 @Bean에서 initMethod, destroyMethod 지정하지 않아도 된다.
+    이 방법 역시 코드를 수정할 수 없는 외부 라이브러리를 초기화, 종료해야 할 때는 사용할 수 없다.
+    그런 경우에는 @Bean의 initMethod, destroyMethod를 사용한다.
      */
     @PostConstruct
     public void init() {
