@@ -21,7 +21,7 @@ public class AllBeanTest {
     void findAllBeans() {
         // Arrange
         // TODO: Initialize test data
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class, DiscountService.class);
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
 
         DiscountService discountService = ac.getBean(DiscountService.class);
         Member member = new Member(1L, "userA", Grade.VIP);
@@ -40,7 +40,7 @@ public class AllBeanTest {
     void findAllBeans2() {
         // Arrange
         // TODO: Initialize test data
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class, DiscountService.class);
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
 
         DiscountService discountService = ac.getBean(DiscountService.class);
         Member member = new Member(1L, "userA", Grade.VIP);
@@ -65,6 +65,12 @@ public class AllBeanTest {
      * DiscountService는 Map으로 모든 DiscountPolicy(rate, fix)를 주입받는다(생성자 주입)
      *
      */
+
+    /**
+    @Service : 이 어노테이션 붙이면 자동으로 DiscountService 클래스가 스프링 빈으로 등록됨.
+    따라서 AnnotationConfigApplicationContext 생성할 때, 생성자의 매개변수로 이 클래스 전달할 필요 없음.
+    만약 @Service 어노테이션 없애면, AnnotationConfigApplicationContext 생성할 때 DiscountService.class도 매개변수로 넘겨야함.
+      */
     @Service
     static class DiscountService {
         private final Map<String, DiscountPolicy> policyMap;
@@ -77,7 +83,7 @@ public class AllBeanTest {
          * 이때 String은 자동으로 해당 빈의 이름(클래스 명 맨 앞글자를 소문자로 바꾼 것)으로 지정됨.
          * 즉, map의 key는 특정 타입 빈의 등록 이름이고, value는 해당 빈의 인스턴스이다.
          */
-        @Autowired // 생성자 하나라서 생략 가능.
+        @Autowired // 생성자 하나라서 생략 가능. 만약 @Service 떼면 스프링이 관리하지 않는 클래스가 되며, 이 어노테이션도 제거해야함.
         public DiscountService(Map<String, DiscountPolicy> policyMap) {
             this.policyMap = policyMap;
             System.out.println("policyMap = " + policyMap);
