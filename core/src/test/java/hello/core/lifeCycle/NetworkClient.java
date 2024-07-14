@@ -1,5 +1,8 @@
 package hello.core.lifeCycle;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 public class NetworkClient {
 
     private String url;
@@ -56,13 +59,18 @@ public class NetworkClient {
     메서드 이름도 수정할 수 없음.
     따라서 해당 인터페이스의 메서드를 사용하는 대신, 직접 빈에서 사용할 콜백함수를 지정해준다.
     NetworkClient 빈에서 사용할 콜백 메서드로 init(), close()를 지정함.
+
+    가장 편한 방법은, 해당 메서드들에 바로 @PostConstruct / @PreDistroy 어노테이션 붙인다.
+    이렇게 하면 @Bean에서 initMethod, destroyMethod 지정하지 않아도 된다.
      */
+    @PostConstruct
     public void init() {
         System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메시지");
     }
 
+    @PreDestroy
     public void close() {
         System.out.println("NetworkClient.close");
         disconnect();
