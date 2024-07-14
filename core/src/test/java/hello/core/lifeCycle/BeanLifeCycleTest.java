@@ -23,7 +23,11 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifeCycleConfig {
 
-        @Bean
+        /**
+         * destroyMethod는 기본값이 "(inferred)"(추론)로, 일반적으로 많이 사용하는 메서드명인 close, shutdown 등 메서드가
+         * 빈으로 등록할 클래스에 존재할 경우 자동으로 인식해준다.
+         */
+        @Bean(initMethod = "init", destroyMethod = "close")
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev");
