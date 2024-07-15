@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.1.5'
+	// 바로 위의 두 개, 의존성 관리 플러그인임.
+	// 의존성에서 버전 빼고 적어도 Spring Boot의 BOM (Bill Of Materials)에 정의된 버전이 자동 적용됨.
 }
 
 group = 'hello'
@@ -29,6 +31,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
