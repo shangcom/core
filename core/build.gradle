@@ -32,6 +32,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	// 싱글톤 빈에서 프로토타입 스코프의 빈을 요청할 때 매번 새로운 인스턴스를 생성해서 주입받기 위해 사용
+	implementation 'jakarta.inject:jakarta.inject-api:2.0.1'
+
 	compileOnly 'org.projectlombok:lombok'
 	testCompileOnly 'org.projectlombok:lombok'
 
